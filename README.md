@@ -15,11 +15,11 @@ Chapter 9: Errors
 Chapter 10: Generics  
 Chapter 11: Tests  
 Chapter 12: Build a CLI  
-Chapter 13: Functional
+Chapter 13: Functional  
 Chapter 14: Cargo  
 Chapter 15: Smart Pointers  
 Chapter 16: Concurrency  
-Chapter 17: Object Oriented
+Chapter 17: Object Oriented  
 Chapter 18: Patterns Pt 2  
 Chapter 19: _Advanced_  
 Chapter 20: Build a Multithreaded Web Server  
