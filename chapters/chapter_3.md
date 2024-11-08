@@ -19,8 +19,10 @@
   - this means they have to be made up of primitive literals (not a
     returned value of a function call)
   ```rust
-  const IPv4_TOTAL_IPS: u32 = 256 * 256 * 256 * 256;
+  const IPv4_TOTAL_IPS: u64 = 256 * 256 * 256 * 256;
   const IPv6_TOTAL_IPS: u128 = 65536 * 65536 * 65536 * 65536 * 65536 * 65536 * 65536 * 65536;
+  // IPv6 will actually fail because 128 bits is not enough to represent the total (T-T)
+  // let's make u256 happen!
   ```
 * you can get a kind of temporary mutability with shadowing.
   there's two ways to do this
@@ -38,9 +40,9 @@
     with the type appended to the name, like `spaces_str` and `spaces_num`.
   2. scope
     ```rust
-    let x = 10;
+    let x = 2;
     {
-        let x = x * 10;
+        let x = x * 2;
         println!("{x}")
     }
     println!("{x}")
@@ -58,10 +60,10 @@ Two categories of data types: scalar and compound
 ### Scalars
 * Numbers
   * integer and floating-point
-  * integers can be signed (positive & negative) or unsigned (negative only)
+  * integers can be signed (positive & negative) or unsigned (positive only)
   * number bit size can be specified directly
-    - `i8`, `i16`, `i32, `i64, `i128`
-    - `u8`, `u16`, `u32, `u64, `u128`
+    - `i8`, `i16`, `i32`, `i64`, `i128`
+    - `u8`, `u16`, `u32`, `u64`, `u128`
     - `f32`, `f64`
     - `isize`, `usize` << these are specific to your architecture and
       basically let you infer the register size of your CPU
@@ -88,19 +90,19 @@ Two categories of data types: scalar and compound
 * Tuples
   * a fixed-size group of values (can be different types)
   * we can use pattern matching (Ch. 6) to destructure the tuple
-  * you can also refernce tuple members with explicit indexing
-  ```rust
-  fn main() {
-      let tup: (i32, f64, u8) = (500, 6.4, 1); 
-  
-      // destructuring
-      let (x, y, z) = tup;
-      println!("x:{x}, y:{y}, z:{z}");
-  
-      // explicit index
-      println!("x:{}, y:{}, z:{}", tup.0, tup.1, tup.2);
-  }
-  ```
+  * you can also reference tuple members directly with explicit indexing
+    ```rust
+    fn main() {
+        let tup: (i32, f64, u8) = (500, 6.4, 1);
+
+        // destructuring
+        let (x, y, z) = tup;
+        println!("x:{x}, y:{y}, z:{z}");
+
+        // explicit index
+        println!("x:{}, y:{}, z:{}", tup.0, tup.1, tup.2);
+    }
+    ```
   * an empty tuple is called a Unit, its initialized as `()`
   and its type is also `()`. expressions implicitly return a unit if
   they don't return any other value.
@@ -108,17 +110,17 @@ Two categories of data types: scalar and compound
   * ordered groups of the same type
   * fixed length at declaration time
   * indexed array access
-  ```rust
-  fn main() {
-      let a = [1, 2, 3, 4, 5];
-      let first = a[0];
-      let second = a[1];
-  }
-  ```
+    ```rust
+    fn main() {
+        let a = [1, 2, 3, 4, 5];
+        let first = a[0];
+        let second = a[1];
+    }
+    ```
   * you can declare size and initialize all the values to a particular value
-  ```rust
-      let a = [1; 5]; // initializes [1, 1, 1, 1, 1]
-  ```
+    ```rust
+        let a = [1; 5]; // initializes [1, 1, 1, 1, 1]
+    ```
   * if you try to access an array out of bounds at runtime, it will panic
     - a panic is a critical runtime error, your rust program will exit
     - if you try to access an array out of bounds at compile time,
