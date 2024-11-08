@@ -4,7 +4,7 @@
 
 * declare a variable using the `let` keyword
   ```rust
-  let x = 9000;
+  let power_level = 9000;
   ```
   if you try to change the immutable variable after declaration,
   the compiler will scold you
@@ -12,41 +12,43 @@
 * all variables are immutable by default
 * you can make a variable mutable by explicitly using the `mut` keyword
   ```rust
-  let mut x = 9000;
-  x = 9000 + 1;
+  let mut power_level = 9000;
+  power_level = 9000 + 1;
   ```
 * constants can only be computed at compile time
   - this means they have to be made up of primitive literals (not a
     returned value of a function call)
   ```rust
   const IPv4_TOTAL_IPS: u32 = 256 * 256 * 256 * 256;
+  const IPv6_TOTAL_IPS: u128 = 65536 * 65536 * 65536 * 65536 * 65536 * 65536 * 65536 * 65536;
   ```
 * you can get a kind of temporary mutability with shadowing.
   there's two ways to do this
-  - redeclaration
-  ```rust
-  let spaces = "    ";
-  let spaces = spaces.len();
-  ```
-  this is useful for initialization of a variable that can be
-  immutable for the rest of the lifetime of the program.
-  this is kind of similar to the Builder Pattern seen in Java,
-  but in different statements rather than chained functions.
-  it is also useful as you can redeclare a variable with different
-  types. it lets us avoid declaring variables of different types,
-  with the type appended to the name, like `spaces_str` and `spaces_num`.
-  - scope
-  ```rust
-  let x = 10;
-  {
-      let x = x * 10;
-      println!("{x}")
-  }
-  println!("{x}")
-  ```
-  this is useful for a value that can change within a particular scope,
-  and it can even reference the original value,
-  but when we return to the original scope it returns to the original value
+  1. redeclaration
+    ```rust
+    let spaces = "    ";
+    let spaces = spaces.len();
+    ```
+    this is useful for initialization of a variable that can be
+    immutable for the rest of the lifetime of the program.
+    this is kind of similar to the Builder Pattern seen in Java,
+    but in different statements rather than chained functions.
+    it is also useful as you can redeclare a variable with different
+    types. it lets us avoid declaring variables of different types,
+    with the type appended to the name, like `spaces_str` and `spaces_num`.
+  2. scope
+    ```rust
+    let x = 10;
+    {
+        let x = x * 10;
+        println!("{x}")
+    }
+    println!("{x}")
+    ```
+    this is useful for a value that can change within a particular scope,
+    and it can even reference the original value,
+    but when we return to the original scope it returns to the original value
+
 ## 3.2 Data Types
 
 Two categories of data types: scalar and compound
@@ -61,7 +63,7 @@ Two categories of data types: scalar and compound
     - `i8`, `i16`, `i32, `i64, `i128`
     - `u8`, `u16`, `u32, `u64, `u128`
     - `f32`, `f64`
-    - isize, usize << these are specific to your architecture and
+    - `isize`, `usize` << these are specific to your architecture and
       basically let you infer the register size of your CPU
   * default integer type is `i32`, default float type is `f64`
   * you can write number literals in various radix formats
