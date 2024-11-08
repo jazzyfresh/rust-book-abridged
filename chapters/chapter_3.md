@@ -25,20 +25,20 @@
   // let's make u256 happen!
   ```
 * you can get a kind of temporary mutability with shadowing.
-  there's two ways to do this
-  1. redeclaration
+  there's two ways to do this:
+  - 1) redeclaration
     ```rust
     let spaces = "    ";
     let spaces = spaces.len();
     ```
-    this is useful for initialization of a variable that can be
-    immutable for the rest of the lifetime of the program.
-    this is kind of similar to the Builder Pattern seen in Java,
-    but in different statements rather than chained functions.
-    it is also useful as you can redeclare a variable with different
-    types. it lets us avoid declaring variables of different types,
-    with the type appended to the name, like `spaces_str` and `spaces_num`.
-  2. scope
+    - this is useful for initialization of a variable that can be
+      immutable for the rest of the lifetime of the program.
+      this is kind of similar to the Builder Pattern seen in Java,
+      but in different statements rather than chained functions.
+      it is also useful as you can redeclare a variable with different
+      types. it lets us avoid declaring variables of different types,
+      with the type appended to the name, like `spaces_str` and `spaces_num`.
+  - 2) scope
     ```rust
     let x = 2;
     {
@@ -47,9 +47,9 @@
     }
     println!("{x}")
     ```
-    this is useful for a value that can change within a particular scope,
-    and it can even reference the original value,
-    but when we return to the original scope it returns to the original value
+    - this is useful for a value that can change within a particular scope,
+      and it can even reference the original value,
+      but when we return to the original scope it returns to the original value
 
 ## 3.2 Data Types
 
