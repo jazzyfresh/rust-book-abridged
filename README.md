@@ -4,8 +4,8 @@ Rust Book (Abridged)
 For anyone that needs to learn Rust faster than an Ent talks
 
 [Chapter 1: Installation](chapters/chapter_1.md)  
-Chapter 2: Build an "Easy" Script  
-Chapter 3: Basics  
+[Chapter 2: Build an "Easy" Script](chapters/chapter_2.md)  
+[Chapter 3: Basics](chapters/chapter_3.md)  
 Chapter 4: Ownership  
 Chapter 5: Structs  
 Chapter 6: Patterns  
